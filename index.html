@@ -16,12 +16,19 @@
     <header>
         <div class="container">
             <a href="#" class="logo">RiCH.K</a>
-            <nav>
+            <button class="mobile-menu-btn" aria-label="Toggle menu">
+                <span class="hamburger"></span>
+            </button>
+            <nav class="nav-menu">
                 <a href="#home">Home</a>
                 <a href="#projects">Projects</a>
                 <a href="#about">About</a>
                 <a href="#testimonials">Testimonials</a>
                 <a href="#skills">Skills</a>
+                <div class="social-links-mobile">
+                    <a href="https://www.linkedin.com/in/richard-kortey-064863363/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/kortey" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
             </nav>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/richard-kortey-064863363/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -339,6 +346,22 @@
     <script>
         // Wait for DOM to be fully loaded
         document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
             // Register GSAP ScrollTrigger
             gsap.registerPlugin(ScrollTrigger);
             
